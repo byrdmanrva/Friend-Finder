@@ -105,7 +105,7 @@
             </select>
         </div>
         <h5><strong>Question 8</strong></h5>
-        <div id="question-1"><p>I'd rather be behind the scenes than in the spotlight</p>
+        <div id="question-8"><p>I'd rather be behind the scenes than in the spotlight</p>
             <select data-placeholder="" class="browser-default" id="q8">
                 <option value="">Choose an option</option>
                 <option value="1">1 (Strongly Disagree)</option>
@@ -116,7 +116,7 @@
             </select>
         </div>
         <h5><strong>Question 9</strong></h5>
-        <div id="question-1"><p>Coffee > Tea</p>
+        <div id="question-9"><p>Coffee > Tea</p>
             <select data-placeholder="" class="browser-default" id="q9">
                 <option value="">Choose an option</option>
                 <option value="1">1 (Strongly Disagree)</option>
@@ -127,7 +127,7 @@
             </select>
         </div>
         <h5><strong>Question 10</strong></h5>
-        <div id="question-1"><p>I LOVE live music</p>
+        <div id="question-10"><p>I LOVE live music</p>
             <select data-placeholder="" class="browser-default" id="q10">
                 <option value="">Choose an option</option>
                 <option value="1">1 (Strongly Disagree)</option>
@@ -139,106 +139,46 @@
         </div>
         </br>
     </div>
-    <button type="button" class="btn btn-primary" id="submit-button">SUBMIT</button>
+    <div class="container">
+        <div id="new-friend">
+                <h1 id="new-friend-name"></h2>
+                <div id="new-friend-pic"></div>
+        </div>
+        <button type="button" class="btn btn-primary" id="submit-button">SUBMIT</button>
+    </div>
+
+    
 </body>
 </html>
 
 <script type="text/javascript">
 
-    $(document).ready(function() {
-        $("#submit-button").on("click", function() {
-            var newFriend = {
-                name: $("#name").val().trim(),
-                profilePic: $("#pic").val().trim(),
-                scores: [
-                    $('q1').val(),
-                    $('q2').val(),
-                    $('q3').val(),
-                    $('q4').val(),
-                    $('q5').val(),
-                    $('q6').val(),
-                    $('q7').val(),
-                    $('q8').val(),
-                    $('q9').val(),
-                    $('q10').val(),
-                ]
-            }
-            var currentURL = window.location.origin;
-            //AJAX posts the data to friends API.
-            $.post(currentURL + "/api/friends", newFriend, function(data) {
-                //Grab the result from the AJAX post so that the best match's name and photo are displayed.
-                console.log(data)
-            });
-            // $.post("/api/friends", function(req, res) {
-    
-            //     // We then add the json the user sent to the character array
-            //     friendList.push(newFriend);
-
-            //     // We then display the JSON to the users
-            //     res.json(friendList);
-            //     });
+$(document).ready(function() {
+    $("#submit-button").on("click", function(event) {
+        event.preventDefault();
+        var newFriend = {
+            name: $("#name").val().trim(),
+            profilePic: $("#pic").val().trim(),
+            scores: [
+                $('#q1').val(),
+                $('#q2').val(),
+                $('#q3').val(),
+                $('#q4').val(),
+                $('#q5').val(),
+                $('#q6').val(),
+                $('#q7').val(),
+                $('#q8').val(),
+                $('#q9').val(),
+                $('#q10').val(),
+            ]
+        }
+        console.log(newFriend)
+        $.post("/api/friends", newFriend, function(data) {
+            $("#new-friend-name").text("Your new best friend is: " + data.name)
+            // $("new-friend-pic").attr("src", data.profilePic)
         })
     })
-    //         //form validation
-    //         function validateForm() {
-    //             var isValid = true;
-    //             $('.validate').each(function() {
-    //                 if ($(this).val() === ''){
-    //                     isValid = false;
-    //                 }
-    //             });
-    //             $('.browser-default').each(function() {
-    //                 if ($(this).val() === ""){
-    //                     isValid = false;
-    //                 }
-    //             });
-    //             return isValid;
-    //         }
-    //         //if everything is filled
-    //         if (validateForm() == true) {
-    //             //creates a new friend from the values submitted
-    //             var newFriend = {
-    //                 name: $('#name').val().trim(),
-    //                 profilePic: $('#photo').val().trim(),
-    //                 scores: [
-    //                     $('#q1').val(),
-    //                     $('#q2').val(),
-    //                     $('#q3').val(),
-    //                     $('#q4').val(),
-    //                     $('#q5').val(),
-    //                     $('#q6').val(),
-    //                     $('#q7').val(),
-    //                     $('#q8').val(),
-    //                     $('#q9').val(),
-    //                     $('#q10').val(),
-    //                 ]
-    //             };
-    //             //Grabs current URL of website
-    //             var currentURL = window.location.origin;
-    //             //AJAX posts the data to friends API.
-    //             $.post(currentURL + "/api/friends", newFriend, function(data) {
-    //                 //Grab the result from the AJAX post so that the best match's name and photo are displayed.
-    //                 $("#matchName").text(data.name);
-    //                 $("#matchPic").attr("src", data.profilePic);
-    //             });
-    //             // Show the modal with the best match
-    //                 $('.modal').modal();
-    //             //clear form after submission
-    //             $('#name').val("");
-    //             $('#photo').val("");
-    //             $('#q1').val("");
-    //             $('#q2').val("");
-    //             $('#q3').val("");
-    //             $('#q4').val("");
-    //             $('#q5').val("");
-    //             $('#q6').val("");
-    //             $('#q7').val("");
-    //             $('#q8').val("");
-    //             $('#q9').val("");
-    //             $('#q10').val("");
-    //         } else {
-    //             alert("Please fill out ALL fields before submitting survey!")
-    //         }
-    //     });
-    // });
+})
+
     </script>
+    
