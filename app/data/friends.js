@@ -30,6 +30,38 @@ var friendsList = [
             "3",
             "2"
         ]
+    },
+    {
+        "name": "Charlie",
+        "profilePic": "https://media.vanityfair.com/photos/549431a548de990f76761cb7/master/w_768,c_limit/charlie-day-in-the-details-vf.jpg",
+        "scores": [
+            "1",
+            "1",
+            "2",
+            "2",
+            "4",
+            "4",
+            "3",
+            "3",
+            "5",
+            "5"
+        ]
+    },
+    {
+        "name": "Jack",
+        "profilePic": "https://pmcvariety.files.wordpress.com/2018/09/jack-black-walk-of-fame-honor.jpg?w=1000&h=562&crop=1",
+        "scores": [
+            "1",
+            "3",
+            "5",
+            "2",
+            "4",
+            "1",
+            "3",
+            "4",
+            "5",
+            "3"
+        ]
     }
 ];
 

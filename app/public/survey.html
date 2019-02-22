@@ -139,13 +139,15 @@
         </div>
         </br>
     </div>
-    <div class="container">
+
+        <button type="button" class="btn btn-primary" id="submit-button">SUBMIT</button>
+
         <div id="new-friend">
                 <h1 id="new-friend-name"></h2>
-                <div id="new-friend-pic"></div>
+                <img id="new-friend-pic" src="" width= 250px>
         </div>
-        <button type="button" class="btn btn-primary" id="submit-button">SUBMIT</button>
-    </div>
+        
+    
 
     
 </body>
@@ -175,7 +177,8 @@ $(document).ready(function() {
         console.log(newFriend)
         $.post("/api/friends", newFriend, function(data) {
             $("#new-friend-name").text("Your new best friend is: " + data.name)
-            // $("new-friend-pic").attr("src", data.profilePic)
+            $("#new-friend-pic").attr("src", data.profilePic)
+            $("#submit-button").hide()
         })
     })
 })
